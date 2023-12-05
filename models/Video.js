@@ -23,7 +23,7 @@ class Video extends Sequelize.Model {
 					type: Sequelize.STRING(100),
 					allowNull: false,
 				},
-                channel_title: {
+				channel_title: {
 					type: Sequelize.STRING(50),
 					allowNull: false,
 				},
@@ -35,14 +35,14 @@ class Video extends Sequelize.Model {
 					type: Sequelize.STRING(1000),
 					allowNull: false,
 				},
-                publishedAt: {
+				publishedAt: {
 					type: Sequelize.DATE,
 					allowNull: false,
 				},
-                section_id: {
-                    type: Sequelize.INTEGER(10),
+				section_id: {
+					type: Sequelize.INTEGER(10),
 					allowNull: false,
-                },
+				},
 			},
 			{
 				sequelize,
@@ -53,13 +53,15 @@ class Video extends Sequelize.Model {
 				paranoid: true,
 				charset: 'utf8',
 				collate: 'utf8_general_ci',
-			},
+			}
 		);
 	}
 	static associate(db) {
-		db.Video.belongsTo(db.Section, { foreignKey: 'section_id', targetKey: 'id' });
+		db.Video.belongsTo(db.Section, {
+			foreignKey: 'section_id',
+			targetKey: 'id',
+		});
 	}
 }
-
 
 module.exports = Video;

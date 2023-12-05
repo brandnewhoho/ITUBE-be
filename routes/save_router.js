@@ -4,9 +4,9 @@ const Video = require('../models/Video');
 const Channel = require('../models/Channel');
 const router = express.Router();
 
-router.post('/video/', async (req, res) => {
-	const { section_id, section_title, user_id } = req.query;
+router.post('/video', async (req, res) => {
 	console.log('req.params', req.query);
+	const { section_id, section_title, user_id } = req.query;
 
 	const new_video = req.body;
 	console.log('new_video', new_video);
@@ -40,15 +40,14 @@ router.post('/video/', async (req, res) => {
 		console.error('새로운 비디오 등록 실패', error);
 		return res.status(500).json({
 			success: false,
-			data: result,
 			message: '새로운 비디오 등록 실패',
 		});
 	}
 });
 
-router.post('/channel/', async (req, res) => {
-	const { section_id, section_title, user_id } = req.query;
+router.post('/channel', async (req, res) => {
 	console.log('req.params', req.query);
+	const { section_id, section_title, user_id } = req.query;
 
 	const new_channel = req.body;
 	console.log('new_channel', new_channel);
