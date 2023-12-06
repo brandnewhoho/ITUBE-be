@@ -76,31 +76,23 @@ router.post('/sign_up', async (req, res) => {
 });
 
 router.post('/validation', async (req, res) => {
-	console.log('1111111');
-	const auth = req.get('Authorization');
-	console.log('auth', auth);
 	if (!(auth && auth.startsWith('Bearer'))) {
 		return res.send({ success: false, message: 'Auth error' });
 	}
-
 	const token = auth.split(' ')[1];
-	console.log('token', token);
 	jwt.verify(token, secret, async (error, decoded) => {
 		if (error) {
 			return res.send({ success: false, message: 'Auth error', error });
 		} else {
 			const user_id = decoded.user_id;
-			console.log('user_id= decoded.user_id', user_id);
 			let options = {
 				attributes: ['nickname'],
 				where: [{ id: user_id }],
 			};
-
 			try {
 				const nickname = await User.findOne(options);
 				return res.send({ success: true, user_id, nickname });
 			} catch (error) {
-				console.log('user fetch error', error);
 				return res.send({
 					success: false,
 					message: 'Error fetching user data',
