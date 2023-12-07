@@ -4,10 +4,10 @@ const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 
 let sequelize = new Sequelize(
-  config.database,
-  config.username,
-  config.password,
-  config
+	config.database,
+	config.username,
+	config.password,
+	config
 );
 
 const User = require('./User.js');
@@ -20,18 +20,15 @@ db.Section = Section;
 db.Channel = Channel;
 db.Video = Video;
 
-
 User.init(sequelize);
 Section.init(sequelize);
 Channel.init(sequelize);
 Video.init(sequelize);
 
-
 User.associate(db);
 Section.associate(db);
 Channel.associate(db);
 Video.associate(db);
-
 
 db.sequelize = sequelize;
 
