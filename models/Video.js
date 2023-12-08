@@ -12,7 +12,7 @@ class Video extends Sequelize.Model {
 					unique: true,
 				},
 				title: {
-					type: Sequelize.STRING(50),
+					type: Sequelize.STRING(200),
 					allowNull: false,
 				},
 				video_id: {
@@ -24,11 +24,11 @@ class Video extends Sequelize.Model {
 					allowNull: false,
 				},
 				channel_title: {
-					type: Sequelize.STRING(50),
+					type: Sequelize.STRING(200),
 					allowNull: false,
 				},
 				channel_id: {
-					type: Sequelize.STRING(50),
+					type: Sequelize.STRING(100),
 					allowNull: false,
 				},
 				description: {

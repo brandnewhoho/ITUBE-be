@@ -12,11 +12,11 @@ class Channel extends Sequelize.Model {
 					unique: true,
 				},
 				channel_id: {
-					type: Sequelize.STRING(50),
+					type: Sequelize.STRING(100),
 					allowNull: false,
 				},
 				title: {
-					type: Sequelize.STRING(50),
+					type: Sequelize.STRING(200),
 					allowNull: false,
 				},
 				section_id: {

@@ -12,7 +12,7 @@ class Section extends Sequelize.Model {
 					unique: true,
 				},
 				title: {
-					type: Sequelize.STRING(30),
+					type: Sequelize.STRING(200),
 					allowNull: false,
 				},
 				type: {
@@ -33,15 +33,17 @@ class Section extends Sequelize.Model {
 				paranoid: true,
 				charset: 'utf8',
 				collate: 'utf8_general_ci',
-			},
+			}
 		);
 	}
 	static associate(db) {
-        db.Section.hasMany(db.Channel, { foreignKey: 'section_id', sourceKey: 'id' });
-        db.Section.hasMany(db.Video, { foreignKey: 'section_id', sourceKey: 'id' });
+		db.Section.hasMany(db.Channel, {
+			foreignKey: 'section_id',
+			sourceKey: 'id',
+		});
+		db.Section.hasMany(db.Video, { foreignKey: 'section_id', sourceKey: 'id' });
 		db.Section.belongsTo(db.User, { foreignKey: 'user_id', targetKey: 'id' });
 	}
 }
-
 
 module.exports = Section;
