@@ -7,7 +7,7 @@ dotenv.config();
 const sync = require('./models/sync.js');
 sync();
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 const app = express();
 
 // middleware

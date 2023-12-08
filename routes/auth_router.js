@@ -75,7 +75,8 @@ router.post('/sign_up', async (req, res) => {
 	}
 });
 
-router.post('/validation', async (req, res) => {
+router.get('/validation', async (req, res) => {
+	const auth = req.get('Authorization');
 	if (!(auth && auth.startsWith('Bearer'))) {
 		return res.send({ success: false, message: 'Auth error' });
 	}
@@ -91,7 +92,12 @@ router.post('/validation', async (req, res) => {
 			};
 			try {
 				const nickname = await User.findOne(options);
-				return res.send({ success: true, user_id, nickname });
+				console.log('nickname', nickname.dataValues.nickname);
+				return res.send({
+					success: true,
+					user_id,
+					nickname: nickname.dataValues.nickname,
+				});
 			} catch (error) {
 				return res.send({
 					success: false,
